@@ -4,6 +4,7 @@ import LenisProvider from "@/components/LenisProvider";
 import GSAPProvider from "@/components/GSAPProvider";
 import Navbar from "@/components/Navbar";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "La Maison Tya Studio — L'élégance féminine au service de votre beauté",
@@ -32,6 +33,7 @@ export default function RootLayout({
             <Navbar />
             <main>{children}</main>
             <WhatsAppFloat />
+            <Analytics />
           </GSAPProvider>
         </LenisProvider>
       </body>
