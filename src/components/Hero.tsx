@@ -5,10 +5,10 @@ import gsap from 'gsap';
 
 const HERO_IMAGES = [
   '/images/hero-1-makeup.jpg',
-  '/images/hero-2-salon.jpg',
+  '/images/hero-4.jpg',
   '/images/hero-3-hairstyle.jpg',
-  '/images/hero-4-skincare.jpg',
   '/images/hero-5-african.jpg',
+  '/images/hero-2-salon.jpg',
 ];
 
 export default function Hero() {
