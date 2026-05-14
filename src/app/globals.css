@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* ========== CSS CUSTOM PROPERTIES ========== */
+:root {
+  /* Brand — extracted from logo */
+  --rose-deep: #B43C64;
+  --rose: #C85078;
+  --rose-light: #DCA0B4;
+  --rose-pale: #F0DCDC;
+  --rose-glow: #F0C8C8;
+
+  --bg-primary: #F0F0F0;
+  --bg-alt: #FAF5F2;
+  --text-primary: #282828;
+  --text-secondary: #6B6560;
+  --text-muted: #9C958E;
+
+  --ease-elegant: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --max-width: 1280px;
+}
+
+/* ========== THEME TOKENS FOR TAILWIND V4 ========== */
+@theme {
+  --color-bg-primary: #F0F0F0;
+  --color-bg-alt: #FAF5F2;
+  --color-text-primary: #282828;
+  --color-text-secondary: #6B6560;
+  --color-text-muted: #9C958E;
+  --color-rose-deep: #B43C64;
+  --color-rose: #C85078;
+  --color-rose-light: #DCA0B4;
+  --color-rose-pale: #F0DCDC;
+  --color-rose-glow: #F0C8C8;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-accent: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* ========== BASE STYLES ========== */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.6;
+  font-size: 18px;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--rose-deep);
+  color: white;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--rose-deep);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--rose-deep);
+  flex-shrink: 0;
+}
+
+.section-label.text-center {
+  justify-content: center;
+}
+
+.section-title {
+  font-size: clamp(32px, 5vw, 48px);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.accent-italic {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--rose);
+  line-height: 1.5;
+}
+
+/* ========== CONTAINER ========== */
+.container-custom {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px);
+}
+
+section {
+  padding: clamp(60px, 10vh, 120px) 0;
+}
+
+/* ========== BUTTON ========== */
+.btn-primary {
+  background: var(--rose-deep);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-elegant);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background: #9E3055;
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(180, 60, 100, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-elegant);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* ========== ANIMATION SYSTEM ========== */
+.anim {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-elegant), transform 0.7s var(--ease-elegant);
+}
+
+.anim.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* ========== HERO REVEAL ========== */
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========== SCROLL INDICATOR ========== */
+@keyframes scrollLine {
+  0% { top: -100%; }
+  50% { top: 100%; }
+  100% { top: 100%; }
+}
+
+/* ========== ROSE GLOW DECORATION ========== */
+.rose-glow-bg {
+  position: relative;
+}
+
+.rose-glow-bg::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(180,60,100,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .anim { opacity: 1 !important; transform: none !important; }
+}
+
+/* ========== LENIS ========== */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ========== INFINITE SCROLL CAROUSEL ========== */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scrollLeft 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
